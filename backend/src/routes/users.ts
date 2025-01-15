@@ -1,11 +1,28 @@
 import express, {Request, Response} from "express";
 import User from "../models/user";
 import jwt from "jsonwebtoken";
+import {check, validationResult} from "express-validator";
 
 const router = express.Router();
 
 // /api/users/register
-router.post("/register", async (req: Request, res: Response) => {
+router.post("/register", [
+    check("firstName", "First name is required").isString(),
+    check("lastName", "Last name is required").isString(),
+    check("email", "Email is required").isEmail(),
+    check("password", "Password with 6 or more characters required").isLength({
+        min: 6,
+    }),
+], async (req: Request, res: Response) => {
+
+    // check if the request has any validation errors
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({
+            message: errors.array(),
+        });
+    }
+
     try{
         // find a user in the database with the same email as the request email
         let user = await User.findOne({
@@ -22,8 +39,8 @@ router.post("/register", async (req: Request, res: Response) => {
         await user.save();
 
         const token = jwt.sign({
-            userId: user._id,
-        }, process.env.JWT_SECRET as string, {
+            userId: user.id,
+        }, process.env.JWT_SECRET_KEY as string, {
             expiresIn: "1d",
         });
 
@@ -35,7 +52,7 @@ router.post("/register", async (req: Request, res: Response) => {
             maxAge: 86400000,
         });
 
-        return res.sendStatus(200);
+        return res.status(200).send({message: "User registered OK"});
 
     }catch (error) {
 
