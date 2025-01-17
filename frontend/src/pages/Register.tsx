@@ -46,14 +46,14 @@ const Register = () => {
                 Create an Account
             </h2>
             <div className="flex flex-col md:flex-row gap-5">
-                <label className="text-gray-700 text-sm font-fold flex-1">
+                <label className="text-gray-700 text-sm font-bold flex-1">
                     First Name
                     <input className="border rounded w-full py-1 px-2 font-normal" 
                     {...register("firstName", { required: "This field is required"})}>
                     </input>
                     {errors.firstName && (<span className="text-red-500">{errors.firstName.message}</span>)}
                 </label>
-                <label className="text-gray-700 text-sm font-fold flex-1">
+                <label className="text-gray-700 text-sm font-bold flex-1">
                     Last Name
                     <input className="border rounded w-full py-1 px-2 font-normal"
                     {...register("lastName", { required: "This field is required"})}>
@@ -61,7 +61,7 @@ const Register = () => {
                     {errors.lastName && (<span className="text-red-500">{errors.lastName.message}</span>)}
                 </label>
             </div>
-            <label className="text-gray-700 text-sm font-fold flex-1">
+            <label className="text-gray-700 text-sm font-bold flex-1">
                 Email
                 <input 
                 type="email"
@@ -70,7 +70,7 @@ const Register = () => {
                 </input>
                 {errors.email && (<span className="text-red-500">{errors.email.message}</span>)}
             </label>
-            <label className="text-gray-700 text-sm font-fold flex-1">
+            <label className="text-gray-700 text-sm font-bold flex-1">
                 Password
                 <input 
                 type="password"
@@ -81,7 +81,7 @@ const Register = () => {
                 </input>
                 {errors.password && (<span className="text-red-500">{errors.password.message}</span>)}
             </label>
-            <label className="text-gray-700 text-sm font-fold flex-1">
+            <label className="text-gray-700 text-sm font-bold flex-1">
                 Confirm Password
                 <input 
                 type="password"
