@@ -7,7 +7,7 @@ import authRoutes from './routes/auth';
 import cookieParser from 'cookie-parser';
 import path from 'path';
 import { v2 as cloudinary } from 'cloudinary';
-import myHotelsRoutes from './routes/my-hotels';
+import myHotelRoutes from './routes/my-hotels';
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, '../../frontend/dist')));
 app.use("/api/auth", authRoutes);
 // any request with /api/users will be handled by the userRoutes
 app.use('/api/users', userRoutes);
-app.use('/api/my-hotels', myHotelsRoutes);
+app.use('/api/my-hotels', myHotelRoutes);
 
 // all other requests will be handled by the frontend index.html file
 app.get('*', (req: Request, res: Response) => {
