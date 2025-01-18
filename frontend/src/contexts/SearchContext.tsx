@@ -22,6 +22,7 @@ type SearchContextProviderProps = {
   children: React.ReactNode;
 };
 
+// use sessionStorage to persist search values on page refresh, but not across tabs
 export const SearchContextProvider = ({
   children,
 }: SearchContextProviderProps) => {

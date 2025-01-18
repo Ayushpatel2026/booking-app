@@ -11,5 +11,8 @@
     "@playwright/test": "^1.49.1",
     "@types/node": "^22.10.7",
     "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "e2e-tests": "file:"
   }
 }
