@@ -15,7 +15,9 @@ import MyHotels from "./pages/MyHotels";
 import EditHotel from "./pages/EditHotel";
 import Search from "./pages/Search";
 import Detail from "./pages/Detail";
+import MyBookings from "./pages/MyBookings";
 import Booking from "./pages/Booking";
+import Home from "./pages/Home";
 
 function App() {
 
@@ -25,7 +27,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Layout>
-          <h1>Home</h1>
+          <Home/>
         </Layout>}/>
         <Route path="/search" element={<Layout>
           <Search/>
@@ -60,6 +62,14 @@ function App() {
             <Layout>
               <EditHotel/>
             </Layout>}/>
+            <Route
+              path="/my-bookings"
+              element={
+                <Layout>
+                  <MyBookings/>
+                </Layout>
+              }
+            />
 
         </>)}
         <Route path="*" element={<Navigate to="/" />} />
